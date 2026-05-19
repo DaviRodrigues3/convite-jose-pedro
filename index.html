@@ -5,8 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0a0e2a">
 <title>José Pedro · 1 ano</title>
-<meta property="og:title" content="José Pedro · 1 ano">
-<meta property="og:description" content="Você está convidado para comemorar meu primeiro ano de vida. 24/05/2026 às 18:30">
+<meta name="description" content="Você está convidado para comemorar o primeiro ano de vida do José Pedro. 24/05/2026 às 18:30. Um convite estelar inspirado em O Pequeno Príncipe.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="José Pedro · 1 ano 🌟">
+<meta property="og:description" content="Você está convidado para o primeiro aniversário do José Pedro. 24/05/2026 às 18:30. ✦ B612 ✦">
+<meta property="og:image" content="og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="O Pequeno Príncipe e a Raposa no planeta B612 — convite de aniversário do José Pedro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="José Pedro · 1 ano 🌟">
+<meta name="twitter:description" content="Você está convidado para o primeiro aniversário do José Pedro. 24/05/2026 às 18:30.">
+<meta name="twitter:image" content="og-image.svg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
 <style>
   @font-face {
     font-family: 'Cinzel';
@@ -377,15 +389,15 @@
     position: relative;
     margin: 30px auto 0;
     width: 100%;
-    max-width: 520px;
-    aspect-ratio: 5/4;
+    max-width: 560px;
+    aspect-ratio: 1/1;
     z-index: 10;
     opacity: 0;
     transform: translateY(40px);
     transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
   }
   .prince-scene.visible { opacity: 1; transform: translateY(0); }
-  .prince-scene svg { width: 100%; height: 100%; display: block; }
+  .prince-scene svg { width: 100%; height: 100%; display: block; overflow: visible; }
 
   .float-anim { animation: float 6s ease-in-out infinite; }
   @keyframes float {
@@ -393,10 +405,50 @@
     50% { transform: translateY(-6px); }
   }
 
-  .scarf-wave { animation: scarf 4s ease-in-out infinite; transform-origin: 65px 110px; transform-box: fill-box; }
+  .prince-float { animation: float 6s ease-in-out infinite; }
+  .fox-float { animation: float 6s ease-in-out infinite; animation-delay: -3s; }
+
+  .scarf-wave { animation: scarf 3.2s ease-in-out infinite; transform-origin: 30px 76px; transform-box: fill-box; }
   @keyframes scarf {
+    0%, 100% { transform: rotate(0deg) translateX(0); }
+    33% { transform: rotate(-3deg) translateX(2px); }
+    66% { transform: rotate(2deg) translateX(-1px); }
+  }
+
+  .tail-wag { animation: tail-wag 3s ease-in-out infinite; transform-origin: 50px 40px; transform-box: fill-box; }
+  @keyframes tail-wag {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-2deg) translateX(2px); }
+    50% { transform: rotate(8deg); }
+  }
+  .fox-group:hover .tail-wag { animation-duration: 1.1s; }
+
+  .rose-group { animation: rose-sway 5s ease-in-out infinite; transform-origin: 22px 95px; transform-box: fill-box; }
+  @keyframes rose-sway {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  .prince-eyes ellipse { transition: transform 0.3s ease; transform-box: fill-box; transform-origin: center; }
+  .prince-group { cursor: pointer; transition: transform 0.4s ease; }
+  .prince-group:hover { transform: translateY(-3px); }
+  .prince-group:hover .prince-smile { d: path('M 30,40 Q 38,48 46,40'); }
+
+  .fox-group { cursor: pointer; transition: transform 0.4s ease; }
+  .fox-group:hover { transform: translateY(-3px); }
+  .fox-group:hover .fox-eyes ellipse { filter: drop-shadow(0 0 3px #ffd54a); }
+
+  .rose-group { cursor: pointer; }
+  .rose-petal-pulse { animation: petal-pulse 0.6s ease-out; transform-origin: 26px 5px; transform-box: fill-box; }
+  @keyframes petal-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  .crown-sparkle { animation: crown-twinkle 2.5s ease-in-out infinite; }
+  @keyframes crown-twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
 
   /* ======= COUNTDOWN ======= */
@@ -557,6 +609,261 @@
     50% { transform: translateY(-6px); opacity: 1; }
   }
   .tap-hint::after { content: '↓'; display: block; margin-top: 6px; font-size: 14px; }
+
+  /* ======= QUOTES CAROUSEL ======= */
+  .quotes-section {
+    position: relative;
+    padding: 40px 28px 10px;
+    text-align: center;
+    z-index: 10;
+    min-height: 140px;
+  }
+  .quote-mark {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: rgba(255,213,74,0.4);
+    line-height: 1;
+    margin-bottom: -10px;
+  }
+  .quote-rotator {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 90px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .quote-rotator.visible { opacity: 1; transform: translateY(0); }
+  .quote-author {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(255,213,74,0.7);
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* ======= WISHES WALL ======= */
+  .wishes-section {
+    position: relative;
+    padding: 50px 24px 30px;
+    text-align: center;
+    z-index: 10;
+  }
+  .wishes-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #ffd54a;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .wishes-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 22px;
+  }
+  .wishes-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 380px;
+    margin: 0 auto 24px;
+  }
+  .wishes-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,213,74,0.3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #fff;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease;
+  }
+  .wishes-input::placeholder { color: rgba(255,255,255,0.4); }
+  .wishes-input:focus { border-color: rgba(255,213,74,0.7); }
+  .wishes-input-name { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; }
+  .wishes-textarea { min-height: 80px; resize: vertical; font-size: 20px; }
+  .wishes-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .wishes-btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .wishes-btn-save {
+    background: linear-gradient(135deg, #ffd54a 0%, #ffa726 100%);
+    color: #0a1340;
+    box-shadow: 0 4px 14px rgba(255,213,74,0.3);
+  }
+  .wishes-btn-save:active { transform: scale(0.97); }
+  .wishes-btn-send {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border: 1px solid rgba(255,213,74,0.4);
+  }
+  .wishes-btn-send:active { background: rgba(255,213,74,0.15); }
+  .wishes-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 8px;
+    perspective: 800px;
+  }
+  .wish-card {
+    position: relative;
+    width: 165px;
+    background: linear-gradient(180deg, #fdf8e9 0%, #f4ecd3 100%);
+    color: #2a2418;
+    padding: 14px 12px 22px;
+    border-radius: 3px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.4) inset;
+    transform: rotate(var(--rot, -2deg));
+    transition: transform 0.3s ease;
+    animation: wish-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .wish-card:hover { transform: rotate(0) scale(1.04); z-index: 5; }
+  .wish-card::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    width: 60px;
+    height: 16px;
+    background: linear-gradient(180deg, rgba(255,213,74,0.85) 0%, rgba(255,167,38,0.7) 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    border-radius: 1px;
+  }
+  .wish-msg {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    line-height: 1.3;
+    word-break: break-word;
+    margin-bottom: 8px;
+    min-height: 50px;
+  }
+  .wish-author {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #8a6800;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(138,104,0,0.25);
+    padding-top: 6px;
+  }
+  @keyframes wish-appear {
+    0% { opacity: 0; transform: rotate(0) scale(0.7) translateY(20px); }
+    100% { opacity: 1; transform: rotate(var(--rot, -2deg)) scale(1); }
+  }
+
+  /* ======= MUSIC TOGGLE BUTTON ======= */
+  .music-btn {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(10, 14, 42, 0.85);
+    border: 1.5px solid rgba(255,213,74,0.5);
+    color: #ffd54a;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 12px rgba(255,213,74,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .music-btn:hover { transform: scale(1.08); box-shadow: 0 4px 20px rgba(255,213,74,0.35); }
+  .music-btn:active { transform: scale(0.94); }
+  .music-btn.playing { background: rgba(255,213,74,0.15); border-color: rgba(255,213,74,0.9); }
+  .music-btn.playing::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,213,74,0.5);
+    animation: music-pulse 2s ease-out infinite;
+  }
+  @keyframes music-pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+
+  /* ======= GOLDEN DUST CANVAS ======= */
+  #dustCanvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ======= CURSOR SPARKLE TRAIL ======= */
+  .cursor-spark {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffe082 0%, rgba(255,213,74,0) 70%);
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.6s ease;
+  }
+
+  /* ======= CONFETTI CANVAS ======= */
+  #confettiCanvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* ======= ACTION BUTTONS LAYOUT ======= */
+  .actions-section {
+    position: relative;
+    padding: 36px 28px 12px;
+    z-index: 10;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ======= REDUCED MOTION ======= */
+  @media (prefers-reduced-motion: reduce) {
+    .float-anim, .prince-float, .fox-float,
+    .scarf-wave, .tail-wag, .rose-group,
+    .crown-sparkle, .star, .nebula,
+    .music-btn.playing::after, .intro-star {
+      animation: none !important;
+    }
+    .shooting-star { display: none; }
+    #dustCanvas, #confettiCanvas { display: none; }
+    .cursor-spark { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -643,163 +950,325 @@
   </div>
 
   <!-- PRINCE SVG SCENE -->
-  <div class="prince-scene reveal">
-    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <div class="prince-scene reveal" id="princeScene">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="O Pequeno Príncipe ajoelhado conversando com a Raposa no planeta B612, com a Rosa ao fundo">
       <defs>
-        <radialGradient id="asteroidGrad" cx="0.4" cy="0.25" r="0.75">
-          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
-          <stop offset="55%" stop-color="#e8d8b0" stop-opacity="0.55"/>
-          <stop offset="100%" stop-color="#8a7548" stop-opacity="0.3"/>
+        <radialGradient id="planetGrad" cx="0.32" cy="0.25" r="0.9">
+          <stop offset="0%" stop-color="#fff7d8"/>
+          <stop offset="35%" stop-color="#e9c97a"/>
+          <stop offset="75%" stop-color="#9b6f2d"/>
+          <stop offset="100%" stop-color="#5a3f15"/>
         </radialGradient>
         <radialGradient id="hairGrad" cx="0.4" cy="0.3">
           <stop offset="0%" stop-color="#fff2a8"/>
-          <stop offset="100%" stop-color="#e6b800"/>
+          <stop offset="60%" stop-color="#ffd54a"/>
+          <stop offset="100%" stop-color="#b88a00"/>
+        </radialGradient>
+        <radialGradient id="skinGrad" cx="0.5" cy="0.4">
+          <stop offset="0%" stop-color="#ffeed5"/>
+          <stop offset="100%" stop-color="#f4cfa6"/>
         </radialGradient>
         <linearGradient id="scarfGrad" x1="0%" y1="0%" x2="100%" y2="20%">
-          <stop offset="0%" stop-color="#f06458"/>
-          <stop offset="100%" stop-color="#b83a2f"/>
+          <stop offset="0%" stop-color="#ffe082"/>
+          <stop offset="50%" stop-color="#ffd54a"/>
+          <stop offset="100%" stop-color="#f59f00"/>
+        </linearGradient>
+        <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#5fa080"/>
+          <stop offset="100%" stop-color="#2c5e4a"/>
+        </linearGradient>
+        <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#7a8f5a"/>
+          <stop offset="100%" stop-color="#3e4a28"/>
         </linearGradient>
         <radialGradient id="foxGrad" cx="0.4" cy="0.3">
-          <stop offset="0%" stop-color="#ffaa66"/>
-          <stop offset="100%" stop-color="#c45a14"/>
+          <stop offset="0%" stop-color="#ffbb77"/>
+          <stop offset="60%" stop-color="#e07b2a"/>
+          <stop offset="100%" stop-color="#a04510"/>
         </radialGradient>
         <radialGradient id="roseGrad" cx="0.4" cy="0.3">
-          <stop offset="0%" stop-color="#ff7a6a"/>
-          <stop offset="100%" stop-color="#a82820"/>
+          <stop offset="0%" stop-color="#ff8a7a"/>
+          <stop offset="60%" stop-color="#d83a30"/>
+          <stop offset="100%" stop-color="#8a1c14"/>
         </radialGradient>
-        <filter id="dropShadow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
-          <feOffset dx="0" dy="4" result="offsetblur"/>
-          <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+        <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+          <feOffset dx="0" dy="3" result="offsetblur"/>
+          <feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
           <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <filter id="glow">
-          <feGaussianBlur stdDeviation="2" result="b"/>
+          <feGaussianBlur stdDeviation="2.5" result="b"/>
           <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="watercolor" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" seed="7"/>
+          <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.08 0"/>
+          <feComposite in2="SourceGraphic" operator="in"/>
+          <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode/></feMerge>
         </filter>
       </defs>
 
-      <!-- decorative stars in scene -->
-      <g fill="#ffd54a" opacity="0.85" filter="url(#glow)">
-        <path d="M 60,80 L 62,86 L 68,86 L 63,90 L 65,96 L 60,92 L 55,96 L 57,90 L 52,86 L 58,86 Z"/>
-        <path d="M 440,90 L 442,96 L 448,96 L 443,100 L 445,106 L 440,102 L 435,106 L 437,100 L 432,96 L 438,96 Z"/>
-        <path d="M 420,210 L 421,214 L 425,214 L 422,217 L 423,221 L 420,218 L 417,221 L 418,217 L 415,214 L 419,214 Z"/>
-        <path d="M 80,200 L 81,204 L 85,204 L 82,207 L 83,211 L 80,208 L 77,211 L 78,207 L 75,204 L 79,204 Z"/>
-        <circle cx="380" cy="60" r="1.5"/>
-        <circle cx="120" cy="250" r="1.2"/>
-        <circle cx="460" cy="160" r="1.3"/>
+      <!-- decorative stars scattered in the scene -->
+      <g fill="#ffd54a" opacity="0.9" filter="url(#glow)">
+        <path d="M 60,70 l 2,7 7,0 -6,4 2,7 -5,-4 -5,4 2,-7 -6,-4 7,0 Z"/>
+        <path d="M 440,80 l 2,7 7,0 -6,4 2,7 -5,-4 -5,4 2,-7 -6,-4 7,0 Z" opacity="0.7"/>
+        <path d="M 50,180 l 1,5 5,0 -4,3 1,5 -3,-3 -3,3 1,-5 -4,-3 5,0 Z" opacity="0.65"/>
+        <circle cx="380" cy="40" r="1.6"/>
+        <circle cx="160" cy="110" r="1.3"/>
+        <circle cx="470" cy="200" r="1.5"/>
+        <circle cx="90" cy="270" r="1.1"/>
+        <circle cx="30" cy="330" r="1.4"/>
+        <circle cx="475" cy="370" r="1.2"/>
+        <circle cx="40" cy="50" r="1"/>
+        <circle cx="240" cy="60" r="0.9"/>
+        <circle cx="410" cy="155" r="1"/>
       </g>
 
-      <!-- Glow halo under asteroid -->
-      <ellipse cx="250" cy="350" rx="240" ry="22" fill="#ffd54a" opacity="0.18" filter="blur(10px)"/>
+      <!-- mini asteroids floating around -->
+      <g filter="url(#softShadow)" opacity="0.85">
+        <ellipse cx="70" cy="235" rx="16" ry="6" fill="#7a6540" stroke="#3a2810" stroke-width="1.2"/>
+        <circle cx="72" cy="233" r="1.6" fill="#3a2810" opacity="0.6"/>
+        <path d="M 60,235 Q 72,232 84,235" fill="none" stroke="#3a2810" stroke-width="0.8" opacity="0.5"/>
 
-      <!-- Asteroid base -->
-      <g filter="url(#dropShadow)">
-        <ellipse cx="250" cy="345" rx="230" ry="55" fill="url(#asteroidGrad)" stroke="#1a1f3a" stroke-width="2.5"/>
-        <!-- surface details -->
-        <path d="M 40,345 Q 90,330 145,338 Q 220,350 295,340 Q 370,330 460,345" fill="none" stroke="#1a1f3a" stroke-width="1.2" opacity="0.4"/>
-        <ellipse cx="335" cy="343" rx="18" ry="4" fill="none" stroke="#1a1f3a" stroke-width="1.5" opacity="0.5"/>
-        <ellipse cx="155" cy="348" rx="14" ry="3.5" fill="none" stroke="#1a1f3a" stroke-width="1.5" opacity="0.5"/>
-        <circle cx="220" cy="350" r="2" fill="#1a1f3a" opacity="0.3"/>
-        <circle cx="390" cy="355" r="2" fill="#1a1f3a" opacity="0.3"/>
+        <ellipse cx="430" cy="285" rx="20" ry="7" fill="#8a7548" stroke="#3a2810" stroke-width="1.2"/>
+        <circle cx="425" cy="284" r="1.8" fill="#3a2810" opacity="0.6"/>
+        <circle cx="436" cy="286" r="1.2" fill="#3a2810" opacity="0.5"/>
+
+        <ellipse cx="420" cy="100" rx="12" ry="5" fill="#7a6540" stroke="#3a2810" stroke-width="1" opacity="0.8"/>
       </g>
 
-      <!-- FOX (left side, sitting on asteroid) -->
-      <g transform="translate(105, 230)" filter="url(#dropShadow)"><g class="float-anim" style="animation-delay: -2s;">
-        <!-- tail behind -->
-        <path d="M -5,55 Q -40,20 -52,-25 Q -38,-12 -22,28 Q -8,52 -5,55 Z" fill="url(#foxGrad)" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M -50,-20 Q -40,-8 -36,8 Q -48,-2 -52,-18 Z" fill="#fff4e0" stroke="#1a1f3a" stroke-width="1.5"/>
-        <!-- body -->
-        <path d="M 0,65 Q -8,30 8,12 L 30,8 Q 50,8 58,28 L 60,72 Q 50,100 28,102 Q 5,100 0,65 Z" fill="url(#foxGrad)" stroke="#1a1f3a" stroke-width="2.5"/>
-        <!-- belly -->
-        <path d="M 16,55 Q 28,50 42,55 Q 45,80 35,95 Q 22,98 16,85 Z" fill="#fff4e0" stroke="#1a1f3a" stroke-width="1.5"/>
-        <!-- head -->
-        <path d="M 8,18 Q -5,0 10,-15 L 28,-22 Q 48,-25 58,-13 L 60,3 Q 60,20 50,28 Q 28,32 8,18 Z" fill="url(#foxGrad)" stroke="#1a1f3a" stroke-width="2.5"/>
-        <!-- ears outer -->
-        <path d="M 10,-10 L 2,-32 L 22,-18 Z" fill="url(#foxGrad)" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 45,-18 L 55,-34 L 58,-12 Z" fill="url(#foxGrad)" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <!-- ears inner -->
-        <path d="M 11,-12 L 6,-24 L 16,-16 Z" fill="#1a1f3a"/>
-        <path d="M 49,-20 L 54,-30 L 56,-15 Z" fill="#1a1f3a"/>
-        <!-- snout -->
-        <path d="M 22,5 Q 30,15 38,10 Q 34,20 26,16 Z" fill="#fff4e0" stroke="#1a1f3a" stroke-width="1.5"/>
-        <ellipse cx="30" cy="7" rx="2.5" ry="2" fill="#1a1f3a"/>
-        <!-- eyes -->
-        <ellipse cx="20" cy="-3" rx="2.2" ry="3" fill="#1a1f3a"/>
-        <ellipse cx="42" cy="-3" rx="2.2" ry="3" fill="#1a1f3a"/>
-        <circle cx="20.8" cy="-4.5" r="0.7" fill="#fff"/>
-        <circle cx="42.8" cy="-4.5" r="0.7" fill="#fff"/>
-        <!-- whisker hint -->
-        <path d="M 12,8 L 5,7" stroke="#1a1f3a" stroke-width="0.8" opacity="0.5"/>
-        <path d="M 48,8 L 55,7" stroke="#1a1f3a" stroke-width="0.8" opacity="0.5"/>
-      </g></g>
+      <!-- B612 PLANET (round, partially submerged at bottom) -->
+      <g class="planet-group" filter="url(#softShadow)">
+        <!-- outer glow halo -->
+        <circle cx="250" cy="395" r="155" fill="#ffd54a" opacity="0.14" filter="blur(8px)"/>
+        <!-- planet sphere -->
+        <circle cx="250" cy="395" r="135" fill="url(#planetGrad)" stroke="#3a2810" stroke-width="2.5"/>
+        <!-- surface contour lines -->
+        <path d="M 130,380 Q 200,395 270,388 Q 340,380 370,400" fill="none" stroke="#5a3f15" stroke-width="1.2" opacity="0.55"/>
+        <path d="M 145,410 Q 220,425 290,418 Q 350,412 375,422" fill="none" stroke="#5a3f15" stroke-width="1" opacity="0.45"/>
+        <!-- craters / dots -->
+        <ellipse cx="200" cy="370" rx="18" ry="5" fill="none" stroke="#3a2810" stroke-width="1.3" opacity="0.5"/>
+        <ellipse cx="310" cy="420" rx="22" ry="6" fill="none" stroke="#3a2810" stroke-width="1.3" opacity="0.5"/>
+        <circle cx="180" cy="420" r="3" fill="#3a2810" opacity="0.35"/>
+        <circle cx="330" cy="370" r="2.2" fill="#3a2810" opacity="0.35"/>
+        <circle cx="155" cy="395" r="1.8" fill="#3a2810" opacity="0.3"/>
+        <!-- highlight glaze -->
+        <ellipse cx="205" cy="320" rx="60" ry="20" fill="#fff" opacity="0.22" filter="blur(4px)"/>
+      </g>
 
-      <!-- LITTLE PRINCE (center, on asteroid) -->
-      <g transform="translate(210, 130)" filter="url(#dropShadow)"><g class="float-anim">
-        <!-- scarf flowing right -->
-        <g class="scarf-wave">
-          <path d="M 60,108 Q 110,95 158,103 Q 188,108 205,122 Q 178,128 152,124 Q 115,128 85,124 L 60,120 Z" fill="url(#scarfGrad)" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M 180,118 Q 195,116 207,128 L 200,131 Q 192,124 180,121 Z" fill="#a82820" stroke="#1a1f3a" stroke-width="2"/>
-          <path d="M 152,118 L 170,121 L 168,126 L 150,123 Z" fill="#8a1f18" opacity="0.55"/>
-        </g>
-        <!-- body (jacket) -->
-        <path d="M 48,108 Q 38,150 45,195 L 108,200 Q 118,160 110,108 Z" fill="#7fb8d4" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <!-- jacket shading -->
-        <path d="M 48,108 Q 44,140 50,175" fill="none" stroke="#5a92ac" stroke-width="2" opacity="0.55"/>
-        <path d="M 110,108 Q 114,140 106,175" fill="none" stroke="#5a92ac" stroke-width="2" opacity="0.55"/>
-        <!-- buttons line -->
-        <line x1="79" y1="115" x2="79" y2="195" stroke="#1a1f3a" stroke-width="1.8"/>
-        <circle cx="74" cy="128" r="2.2" fill="#1a1f3a"/>
-        <circle cx="74" cy="150" r="2.2" fill="#1a1f3a"/>
-        <circle cx="74" cy="172" r="2.2" fill="#1a1f3a"/>
-        <!-- arms -->
-        <path d="M 48,115 Q 26,128 24,152 Q 36,150 48,145 Z" fill="#7fb8d4" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M 110,115 Q 132,128 134,152 Q 122,150 110,145 Z" fill="#7fb8d4" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <!-- head (golden hair) -->
-        <ellipse cx="79" cy="60" rx="44" ry="48" fill="url(#hairGrad)" stroke="#1a1f3a" stroke-width="2.5"/>
-        <!-- hair fluff -->
-        <path d="M 40,45 Q 46,32 56,40" fill="none" stroke="#b88a00" stroke-width="1.8" opacity="0.7"/>
-        <path d="M 60,28 Q 68,18 78,26" fill="none" stroke="#b88a00" stroke-width="1.8" opacity="0.7"/>
-        <path d="M 82,26 Q 90,18 100,28" fill="none" stroke="#b88a00" stroke-width="1.8" opacity="0.7"/>
-        <path d="M 102,40 Q 110,32 116,46" fill="none" stroke="#b88a00" stroke-width="1.8" opacity="0.7"/>
-        <path d="M 44,62 Q 52,54 60,60" fill="none" stroke="#b88a00" stroke-width="1.5" opacity="0.6"/>
-        <path d="M 92,62 Q 100,54 110,60" fill="none" stroke="#b88a00" stroke-width="1.5" opacity="0.6"/>
-        <path d="M 50,85 Q 60,78 72,84" fill="none" stroke="#b88a00" stroke-width="1.5" opacity="0.55"/>
-        <path d="M 88,85 Q 98,78 108,84" fill="none" stroke="#b88a00" stroke-width="1.5" opacity="0.55"/>
-        <!-- crown -->
-        <path d="M 44,22 L 52,4 L 64,18 L 79,-2 L 94,18 L 106,4 L 114,22 L 114,30 L 44,30 Z" fill="#ffd54a" stroke="#1a1f3a" stroke-width="2.5" stroke-linejoin="round"/>
-        <circle cx="79" cy="-1" r="3.2" fill="#e85a4f" stroke="#1a1f3a" stroke-width="1.5"/>
-        <circle cx="52" cy="22" r="1.8" fill="#1a1f3a"/>
-        <circle cx="106" cy="22" r="1.8" fill="#1a1f3a"/>
-        <line x1="44" y1="30" x2="114" y2="30" stroke="#b88a00" stroke-width="1.2" opacity="0.6"/>
-        <!-- crown shine -->
-        <path d="M 50,12 L 54,6" stroke="#fff8d0" stroke-width="1.2" opacity="0.8"/>
-        <path d="M 90,12 L 96,6" stroke="#fff8d0" stroke-width="1.2" opacity="0.8"/>
-      </g></g>
+      <!-- VOLCANO (dormant, left side of planet) -->
+      <g transform="translate(150, 305)" filter="url(#softShadow)">
+        <path d="M 0,28 L 8,4 L 18,4 L 26,28 Z" fill="#8a6230" stroke="#3a2810" stroke-width="1.5" stroke-linejoin="round"/>
+        <ellipse cx="13" cy="4" rx="5" ry="1.5" fill="#3a2810" opacity="0.75"/>
+        <!-- smoke wisp -->
+        <path d="M 11,3 Q 7,-4 12,-10 Q 17,-4 14,3" fill="#fff" opacity="0.45"/>
+        <path d="M 13,-2 Q 11,-7 14,-12" fill="none" stroke="#fff" stroke-width="1" opacity="0.4"/>
+      </g>
 
-      <!-- ROSE (right side, on asteroid) -->
-      <g transform="translate(345, 235)" filter="url(#dropShadow)"><g class="float-anim" style="animation-delay: -3s;">
-        <!-- stem -->
-        <path d="M 22,100 Q 18,60 22,18" fill="none" stroke="#2a6e3f" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- BAOBAB seedling (right side of planet) -->
+      <g transform="translate(348, 318)" filter="url(#softShadow)">
+        <path d="M 6,14 Q 7,5 8,14" fill="none" stroke="#5a3f15" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="4" cy="7" r="3.5" fill="#5fb37d" stroke="#2a6e3f" stroke-width="1.2"/>
+        <circle cx="10" cy="6" r="3" fill="#4ca96a" stroke="#2a6e3f" stroke-width="1.2"/>
+        <circle cx="7" cy="2" r="2.8" fill="#5fb37d" stroke="#2a6e3f" stroke-width="1.2"/>
+        <circle cx="6" cy="3" r="0.8" fill="#fff" opacity="0.5"/>
+      </g>
+
+      <!-- ROSE (behind/left of prince, growing from planet) -->
+      <g transform="translate(120, 200)" class="rose-group" filter="url(#softShadow)">
+        <!-- stem (bent toward prince) -->
+        <path d="M 22,95 Q 14,65 24,35 Q 30,18 28,5" fill="none" stroke="#2a6e3f" stroke-width="3.5" stroke-linecap="round"/>
         <!-- thorns -->
-        <path d="M 20,75 L 14,73" stroke="#2a6e3f" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M 21,55 L 28,53" stroke="#2a6e3f" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M 18,72 L 11,70" stroke="#2a6e3f" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M 25,50 L 32,48" stroke="#2a6e3f" stroke-width="1.6" stroke-linecap="round"/>
         <!-- big leaf -->
-        <path d="M 22,68 Q 42,62 52,72 Q 42,80 22,74 Z" fill="#4ca96a" stroke="#1a1f3a" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="26" y1="70" x2="46" y2="72" stroke="#2a6e3f" stroke-width="1"/>
+        <path d="M 22,62 Q 40,56 48,68 Q 38,74 22,68 Z" fill="#5fb37d" stroke="#2a6e3f" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="26" y1="64" x2="44" y2="68" stroke="#2a6e3f" stroke-width="0.9" opacity="0.7"/>
         <!-- small leaf -->
-        <path d="M 22,88 Q 8,84 0,92 Q 8,98 22,92 Z" fill="#4ca96a" stroke="#1a1f3a" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="18" y1="90" x2="6" y2="91" stroke="#2a6e3f" stroke-width="1"/>
-        <!-- flower -->
-        <circle cx="22" cy="15" r="17" fill="url(#roseGrad)" stroke="#1a1f3a" stroke-width="2.2"/>
-        <!-- petal layers -->
-        <path d="M 22,2 Q 10,10 14,22 Q 22,18 30,22 Q 34,10 22,2 Z" fill="#c4453a" stroke="#1a1f3a" stroke-width="1.3"/>
-        <path d="M 7,15 Q 12,8 22,12 Q 22,22 14,26 Q 4,22 7,15 Z" fill="#c4453a" stroke="#1a1f3a" stroke-width="1.3" opacity="0.9"/>
-        <path d="M 37,15 Q 32,8 22,12 Q 22,22 30,26 Q 40,22 37,15 Z" fill="#c4453a" stroke="#1a1f3a" stroke-width="1.3" opacity="0.9"/>
-        <circle cx="22" cy="15" r="5" fill="#8a2820" stroke="#1a1f3a" stroke-width="1.2"/>
-        <!-- highlight -->
-        <ellipse cx="16" cy="10" rx="3" ry="2" fill="#ffaa9a" opacity="0.7"/>
-      </g></g>
+        <path d="M 20,82 Q 6,78 -2,86 Q 6,92 20,86 Z" fill="#5fb37d" stroke="#2a6e3f" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="14" y1="84" x2="2" y2="85" stroke="#2a6e3f" stroke-width="0.9" opacity="0.7"/>
+
+        <!-- flower (layered petals) -->
+        <g transform="translate(28, 5)" class="rose-flower">
+          <!-- outer petals -->
+          <path d="M -12,-2 Q -18,-14 -8,-20 Q 0,-24 8,-20 Q 18,-14 12,-2 Q 8,8 0,6 Q -8,8 -12,-2 Z" fill="url(#roseGrad)" stroke="#7a1812" stroke-width="1.3"/>
+          <!-- mid petals -->
+          <path d="M -8,-2 Q -12,-12 -4,-16 Q 4,-18 10,-12 Q 14,-6 10,-2 Q 5,5 0,4 Q -5,5 -8,-2 Z" fill="#d83a30" stroke="#7a1812" stroke-width="1" opacity="0.95"/>
+          <!-- inner petals -->
+          <path d="M -5,-2 Q -8,-10 0,-12 Q 8,-10 8,-4 Q 6,3 0,2 Q -4,3 -5,-2 Z" fill="#a82820" stroke="#5a1010" stroke-width="0.8"/>
+          <!-- center bud -->
+          <circle cx="0" cy="-3" r="3.2" fill="#7a1812" stroke="#3a0808" stroke-width="0.7"/>
+          <!-- highlight petals -->
+          <ellipse cx="-4" cy="-13" rx="2.5" ry="1.4" fill="#ffcec0" opacity="0.75"/>
+          <ellipse cx="6" cy="-10" rx="1.6" ry="1" fill="#ffaa9a" opacity="0.7"/>
+          <!-- dew drop -->
+          <circle cx="7" cy="-6" r="1.4" fill="#cdf5ff" opacity="0.92"/>
+          <circle cx="7.3" cy="-6.5" r="0.5" fill="#ffffff"/>
+        </g>
+      </g>
+
+      <!-- LITTLE PRINCE (kneeling, 3/4 view facing right toward fox) -->
+      <g transform="translate(180, 200)" class="prince-group" filter="url(#softShadow)">
+        <g class="prince-float">
+
+          <!-- SCARF flowing right (golden — canonical) -->
+          <g class="scarf-wave">
+            <path d="M 32,72 Q 54,68 70,72 Q 96,76 116,90 Q 100,94 84,88 Q 62,92 42,86 L 30,80 Z" fill="url(#scarfGrad)" stroke="#a06800" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M 100,86 Q 114,84 124,94 L 116,97 Q 108,90 100,88 Z" fill="#f59f00" stroke="#a06800" stroke-width="1.4"/>
+            <path d="M 50,76 Q 70,78 92,82" stroke="#c98300" stroke-width="1" opacity="0.65" fill="none"/>
+          </g>
+
+          <!-- back leg (tucked under) -->
+          <path d="M 20,108 Q 10,128 14,150 L 32,152 Q 36,138 36,118 Z" fill="url(#pantsGrad)" stroke="#2a3418" stroke-width="1.7" stroke-linejoin="round"/>
+          <!-- front leg (knee on ground, reaching forward) -->
+          <path d="M 38,108 Q 50,128 60,140 Q 64,150 50,154 L 28,152 Q 32,135 32,118 Z" fill="url(#pantsGrad)" stroke="#2a3418" stroke-width="1.8" stroke-linejoin="round"/>
+          <ellipse cx="56" cy="140" rx="6" ry="3" fill="#5a6a3a" opacity="0.5"/>
+
+          <!-- BOOTS -->
+          <path d="M 10,148 Q 6,158 14,162 L 32,162 Q 38,156 32,150 Z" fill="#5a3a1a" stroke="#2a1a08" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M 44,152 Q 58,158 64,156 Q 68,160 60,164 L 44,162 Z" fill="#5a3a1a" stroke="#2a1a08" stroke-width="1.6" stroke-linejoin="round"/>
+
+          <!-- BODY (royal jacket, leaning forward) -->
+          <path d="M 16,55 Q 10,82 16,110 L 52,112 Q 58,82 50,55 Z" fill="url(#jacketGrad)" stroke="#1a2e22" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M 22,60 Q 26,82 22,102" fill="none" stroke="#1a3a28" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 46,60 Q 50,82 46,102" fill="none" stroke="#1a3a28" stroke-width="1.4" opacity="0.7"/>
+          <!-- button row -->
+          <line x1="34" y1="68" x2="34" y2="108" stroke="#1a2e22" stroke-width="1.4"/>
+          <circle cx="34" cy="74" r="1.6" fill="#d0b870"/>
+          <circle cx="34" cy="88" r="1.6" fill="#d0b870"/>
+          <circle cx="34" cy="102" r="1.6" fill="#d0b870"/>
+
+          <!-- back arm (resting on knee) -->
+          <path d="M 16,60 Q 6,76 8,92 Q 14,96 22,93 Q 24,80 22,68 Z" fill="url(#jacketGrad)" stroke="#1a2e22" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="12" cy="93" r="4" fill="url(#skinGrad)" stroke="#a06b3a" stroke-width="1.2"/>
+          <!-- front arm (reaching out toward the fox) -->
+          <path d="M 50,60 Q 76,72 96,84 Q 104,88 100,94 Q 86,92 68,86 Q 54,80 48,72 Z" fill="url(#jacketGrad)" stroke="#1a2e22" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="100" cy="92" r="5" fill="url(#skinGrad)" stroke="#a06b3a" stroke-width="1.2"/>
+
+          <!-- NECK -->
+          <path d="M 28,52 L 28,62 L 40,62 L 40,52 Z" fill="url(#skinGrad)" stroke="#a06b3a" stroke-width="1.2"/>
+
+          <!-- HEAD -->
+          <g class="prince-head">
+            <!-- face (3/4 turn) -->
+            <path d="M 14,8 Q 12,32 26,52 Q 42,56 56,46 Q 62,28 56,8 Q 38,-2 14,8 Z" fill="url(#skinGrad)" stroke="#a06b3a" stroke-width="1.6"/>
+
+            <!-- HAIR (curly tufts in layers, watercolor-style) -->
+            <path d="M 6,18 Q 2,0 16,-4 Q 32,-12 52,-8 Q 66,0 64,20 Q 56,10 48,8 Q 38,4 26,6 Q 16,10 6,18 Z" fill="url(#hairGrad)" stroke="#8a6800" stroke-width="1.4" stroke-linejoin="round"/>
+            <!-- curl tufts -->
+            <path d="M 18,-6 Q 26,-14 32,-6 Q 28,-2 22,0 Z" fill="url(#hairGrad)" stroke="#8a6800" stroke-width="1.2"/>
+            <path d="M 36,-8 Q 46,-16 52,-4 Q 46,0 40,-2 Z" fill="url(#hairGrad)" stroke="#8a6800" stroke-width="1.2"/>
+            <path d="M 8,12 Q 2,20 6,30 Q 10,26 12,22 Z" fill="url(#hairGrad)" stroke="#8a6800" stroke-width="1.2"/>
+            <path d="M 60,10 Q 66,16 64,28 Q 60,24 58,20 Z" fill="url(#hairGrad)" stroke="#8a6800" stroke-width="1.2"/>
+            <!-- bang highlights -->
+            <path d="M 20,8 Q 28,14 36,10" fill="none" stroke="#b88a00" stroke-width="1.4" opacity="0.7"/>
+            <path d="M 38,10 Q 46,14 54,9" fill="none" stroke="#b88a00" stroke-width="1.4" opacity="0.7"/>
+            <path d="M 14,22 Q 18,18 20,20" fill="none" stroke="#b88a00" stroke-width="1.2" opacity="0.6"/>
+
+            <!-- CROWN -->
+            <path d="M 12,-6 L 20,-16 L 28,-10 L 36,-20 L 44,-10 L 52,-16 L 60,-6 L 60,2 L 12,2 Z" fill="#ffd54a" stroke="#8a6800" stroke-width="1.7" stroke-linejoin="round"/>
+            <line x1="12" y1="2" x2="60" y2="2" stroke="#8a6800" stroke-width="1" opacity="0.7"/>
+            <circle cx="36" cy="-20" r="2.8" fill="#e85a4f" stroke="#7a1812" stroke-width="1"/>
+            <circle cx="20" cy="-2" r="1.4" fill="#7a4e00"/>
+            <circle cx="52" cy="-2" r="1.4" fill="#7a4e00"/>
+            <path class="crown-sparkle" d="M 22,-12 L 24,-15" stroke="#fff8d0" stroke-width="1.4" stroke-linecap="round"/>
+            <path class="crown-sparkle" d="M 46,-12 L 48,-15" stroke="#fff8d0" stroke-width="1.4" stroke-linecap="round"/>
+
+            <!-- FACE FEATURES -->
+            <g class="prince-eyes">
+              <ellipse cx="30" cy="28" rx="2.4" ry="3" fill="#1a2e22"/>
+              <ellipse cx="46" cy="26" rx="2.4" ry="3" fill="#1a2e22"/>
+              <circle cx="30.9" cy="27" r="0.9" fill="#fff"/>
+              <circle cx="46.9" cy="25" r="0.9" fill="#fff"/>
+            </g>
+            <!-- eyebrows -->
+            <path d="M 26,22 Q 30,20 34,22" fill="none" stroke="#8a6800" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M 42,21 Q 46,19 50,21" fill="none" stroke="#8a6800" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- rosy cheeks -->
+            <ellipse cx="22" cy="38" rx="3.2" ry="2" fill="#ff9a8a" opacity="0.55"/>
+            <ellipse cx="52" cy="36" rx="3.2" ry="2" fill="#ff9a8a" opacity="0.55"/>
+            <!-- nose -->
+            <path d="M 38,30 Q 39,36 36,39" fill="none" stroke="#a06b3a" stroke-width="1.2" stroke-linecap="round"/>
+            <!-- gentle smile -->
+            <path class="prince-smile" d="M 32,42 Q 38,46 44,42" fill="none" stroke="#a04020" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- FOX (sitting, 3/4 view facing left toward prince) -->
+      <g transform="translate(330, 250)" class="fox-group" filter="url(#softShadow)">
+        <g class="fox-float">
+
+          <!-- TAIL (curled up and back) -->
+          <g class="tail-wag">
+            <path d="M 48,42 Q 78,32 90,8 Q 94,-4 86,-14 Q 76,2 70,18 Q 60,32 48,42 Z" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.8" stroke-linejoin="round"/>
+            <!-- white tail tip -->
+            <path d="M 86,-14 Q 94,-12 92,-2 Q 88,2 82,-4 Q 82,-10 86,-14 Z" fill="#fff4e0" stroke="#5a2810" stroke-width="1.4"/>
+          </g>
+
+          <!-- back leg/haunch -->
+          <ellipse cx="38" cy="62" rx="16" ry="10" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.6"/>
+
+          <!-- BODY (sitting upright) -->
+          <path d="M 6,22 Q -4,42 4,66 Q 12,76 32,76 Q 52,74 56,60 Q 60,42 50,18 Q 30,8 6,22 Z" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="2" stroke-linejoin="round"/>
+
+          <!-- CHEST + BELLY (white fluff) -->
+          <path d="M 16,28 Q 20,38 22,54 Q 22,66 30,70 Q 40,66 38,54 Q 38,38 32,28 Z" fill="#fff4e0" stroke="#5a2810" stroke-width="1.4"/>
+
+          <!-- FRONT PAWS -->
+          <ellipse cx="20" cy="70" rx="6.5" ry="4.5" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.4"/>
+          <ellipse cx="36" cy="71" rx="6.5" ry="4.5" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.4"/>
+          <path d="M 17,70 L 17,74 M 21,70 L 21,74 M 23,70 L 23,74" stroke="#3a1808" stroke-width="0.7"/>
+          <path d="M 33,71 L 33,75 M 37,71 L 37,75 M 39,71 L 39,75" stroke="#3a1808" stroke-width="0.7"/>
+
+          <!-- HEAD (3/4 view facing left) -->
+          <g class="fox-head">
+            <!-- main head -->
+            <path d="M 4,-12 Q -10,4 -4,20 Q 10,28 30,24 Q 44,18 46,4 Q 44,-14 30,-20 Q 14,-22 4,-12 Z" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.8" stroke-linejoin="round"/>
+
+            <!-- EARS (rosy interior, no black) -->
+            <path d="M 0,-12 L -8,-34 L 16,-20 Z" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M -1,-14 L -3,-26 L 10,-18 Z" fill="#f4a896" opacity="0.8"/>
+            <path d="M 32,-20 L 40,-34 L 44,-12 Z" fill="url(#foxGrad)" stroke="#5a2810" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M 34,-20 L 38,-28 L 41,-14 Z" fill="#f4a896" opacity="0.8"/>
+
+            <!-- white cheek patch -->
+            <path d="M -4,8 Q 4,20 20,18 Q 22,10 16,2 Q 6,2 -4,8 Z" fill="#fff4e0" stroke="#5a2810" stroke-width="1.4"/>
+
+            <!-- snout -->
+            <path d="M -8,4 Q -12,10 -10,16 Q -2,20 4,14 Q 2,8 -8,4 Z" fill="#fff4e0" stroke="#5a2810" stroke-width="1.4"/>
+            <ellipse cx="-10" cy="8" rx="2.6" ry="2.2" fill="#1a0a08"/>
+            <ellipse cx="-10.5" cy="7" rx="0.7" ry="0.5" fill="#fff" opacity="0.5"/>
+
+            <!-- mouth (subtle smile) -->
+            <path d="M -8,12 Q -2,17 6,14" fill="none" stroke="#5a2810" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M 6,14 Q 9,12 10,9" fill="none" stroke="#5a2810" stroke-width="1.1" stroke-linecap="round"/>
+
+            <!-- EYES (expressive, double-shine) -->
+            <g class="fox-eyes">
+              <ellipse cx="8" cy="-2" rx="2.9" ry="3.4" fill="#1a2e22"/>
+              <circle cx="8.8" cy="-3" r="1.1" fill="#fff"/>
+              <circle cx="7.4" cy="0" r="0.5" fill="#fff" opacity="0.7"/>
+              <ellipse cx="26" cy="-4" rx="3.1" ry="3.5" fill="#1a2e22"/>
+              <circle cx="26.8" cy="-5" r="1.2" fill="#fff"/>
+              <circle cx="25.4" cy="-2" r="0.5" fill="#fff" opacity="0.7"/>
+            </g>
+
+            <!-- eyebrow hints -->
+            <path d="M 4,-8 Q 8,-10 12,-8" fill="none" stroke="#5a2810" stroke-width="1" opacity="0.7"/>
+            <path d="M 22,-10 Q 27,-12 30,-10" fill="none" stroke="#5a2810" stroke-width="1" opacity="0.7"/>
+
+            <!-- whiskers -->
+            <path d="M -6,11 L -16,9" stroke="#5a2810" stroke-width="0.7" opacity="0.6"/>
+            <path d="M -6,13 L -16,15" stroke="#5a2810" stroke-width="0.7" opacity="0.6"/>
+            <path d="M 4,12 L 12,9" stroke="#5a2810" stroke-width="0.6" opacity="0.5"/>
+          </g>
+
+          <!-- fur texture on chest -->
+          <path d="M 24,34 L 22,42 M 28,32 L 28,44 M 32,34 L 34,42" stroke="#fff" stroke-width="0.7" opacity="0.55"/>
+        </g>
+      </g>
     </svg>
   </div>
 
@@ -814,7 +1283,45 @@
     </div>
   </div>
 
+  <!-- ACTION BUTTONS -->
+  <div class="actions-section reveal">
+    <div class="actions">
+      <button class="btn btn-primary" id="btnRSVP" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Confirmar presença
+      </button>
+      <button class="btn btn-secondary" id="btnCalendar" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Adicionar ao calendário
+      </button>
+      <button class="btn btn-secondary" id="btnShare" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Compartilhar convite
+      </button>
+    </div>
+  </div>
 
+  <!-- QUOTES CAROUSEL -->
+  <div class="quotes-section reveal">
+    <div class="quote-mark">❝</div>
+    <div class="quote-rotator visible" id="quoteRotator">Tu te tornas eternamente responsável por aquilo que cativas.</div>
+    <div class="quote-author">Antoine de Saint-Exupéry</div>
+  </div>
+
+  <!-- WISHES WALL -->
+  <div class="wishes-section reveal">
+    <div class="wishes-title">Mural de recados</div>
+    <div class="wishes-sub">Deixe uma palavrinha para o José Pedro 🌟</div>
+    <div class="wishes-form">
+      <input type="text" id="wishName" class="wishes-input wishes-input-name" placeholder="SEU NOME" maxlength="40">
+      <textarea id="wishMsg" class="wishes-input wishes-textarea" placeholder="Escreva seu recado..." maxlength="160"></textarea>
+      <div class="wishes-actions">
+        <button class="wishes-btn wishes-btn-save" id="btnSaveWish" type="button">Pendurar no mural</button>
+        <button class="wishes-btn wishes-btn-send" id="btnSendWish" type="button">Enviar para os pais</button>
+      </div>
+    </div>
+    <div class="wishes-wall" id="wishesWall"></div>
+  </div>
 
   <!-- FOOTER -->
   <div class="footer">
@@ -823,6 +1330,15 @@
   </div>
 
 </div>
+
+<!-- MUSIC TOGGLE BUTTON (fixed) -->
+<button class="music-btn" id="musicBtn" type="button" aria-label="Tocar música ambiente" title="Música ambiente">🔇</button>
+
+<!-- GOLDEN DUST PARTICLES -->
+<canvas id="dustCanvas" aria-hidden="true"></canvas>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confettiCanvas" aria-hidden="true"></canvas>
 
 <script>
   // hide intro
@@ -932,7 +1448,9 @@
   }
 
   // ===== Subtle parallax on prince scene (desktop only) =====
-  if (window.matchMedia('(hover: hover)').matches) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = window.matchMedia('(hover: hover)').matches;
+  if (isDesktop && !reducedMotion) {
     const scene = document.querySelector('.prince-scene svg');
     document.addEventListener('mousemove', (e) => {
       if (!scene) return;
@@ -941,6 +1459,437 @@
       scene.style.transform = `translate(${x}px, ${y}px)`;
     });
   }
+
+  // ===== Action buttons =====
+  function confirmRSVP() {
+    triggerConfetti();
+    playChime();
+    setTimeout(() => {
+      const msg = encodeURIComponent('Olá! Confirmo presença no aniversário de 1 ano do José Pedro 🌟');
+      window.open('https://wa.me/?text=' + msg, '_blank');
+    }, 700);
+  }
+  function addToCalendar() {
+    const start = '20260524T213000Z';
+    const end = '20260525T003000Z';
+    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Aniversário 1 ano - José Pedro')}&dates=${start}/${end}&details=${encodeURIComponent('Você está convidado para comemorar meu primeiro ano de vida!')}`;
+    window.open(url, '_blank');
+  }
+  async function shareInvite() {
+    const data = {
+      title: 'José Pedro - 1 ano',
+      text: 'Você está convidado para o aniversário de 1 ano do José Pedro! 24/05/2026 às 18:30 🌟',
+      url: window.location.href
+    };
+    if (navigator.share) { try { await navigator.share(data); } catch(e) {} }
+    else { navigator.clipboard.writeText(data.text + ' ' + data.url); alert('Convite copiado!'); }
+  }
+  document.getElementById('btnRSVP').addEventListener('click', confirmRSVP);
+  document.getElementById('btnCalendar').addEventListener('click', addToCalendar);
+  document.getElementById('btnShare').addEventListener('click', shareInvite);
+
+  // ===== QUOTES ROTATOR =====
+  const QUOTES = [
+    { t: 'Tu te tornas eternamente responsável por aquilo que cativas.' },
+    { t: 'O essencial é invisível aos olhos.' },
+    { t: 'Foi o tempo que perdeste com tua rosa que a fez tão importante.' },
+    { t: 'Os homens grandes são todos crianças, mas poucos se lembram disso.' },
+    { t: 'É uma loucura odiar todas as rosas porque uma te espinhou.' },
+    { t: 'Não se vê bem senão com o coração.' },
+    { t: 'O que faz o deserto belo é que ele esconde um poço em algum lugar.' }
+  ];
+  let qIndex = 0;
+  const qEl = document.getElementById('quoteRotator');
+  function rotateQuote() {
+    qEl.classList.remove('visible');
+    setTimeout(() => {
+      qIndex = (qIndex + 1) % QUOTES.length;
+      qEl.textContent = QUOTES[qIndex].t;
+      qEl.classList.add('visible');
+    }, 800);
+  }
+  setInterval(rotateQuote, 6500);
+
+  // ===== GOLDEN DUST PARTICLES =====
+  (function dustParticles(){
+    if (reducedMotion) return;
+    const canvas = document.getElementById('dustCanvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    const COUNT = window.innerWidth < 600 ? 22 : 38;
+    function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 0.6 + Math.random() * 1.8,
+        vy: -0.15 - Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.25,
+        phase: Math.random() * Math.PI * 2,
+        a: 0.3 + Math.random() * 0.5
+      });
+    }
+    function draw(){
+      ctx.clearRect(0, 0, w, h);
+      for (const p of particles) {
+        p.phase += 0.015;
+        p.x += p.vx + Math.sin(p.phase) * 0.2;
+        p.y += p.vy;
+        if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        grad.addColorStop(0, `rgba(255, 224, 130, ${p.a})`);
+        grad.addColorStop(0.5, `rgba(255, 213, 74, ${p.a * 0.4})`);
+        grad.addColorStop(1, 'rgba(255, 213, 74, 0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ===== CONFETTI =====
+  let confettiActive = false;
+  function triggerConfetti(){
+    if (reducedMotion) return;
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    const pieces = [];
+    const colors = ['#ffd54a', '#ffa726', '#e85a4f', '#fff', '#7fb8d4', '#a82820'];
+    for (let i = 0; i < 140; i++) {
+      pieces.push({
+        x: Math.random() * w,
+        y: -20 - Math.random() * h * 0.4,
+        vx: (Math.random() - 0.5) * 6,
+        vy: 2 + Math.random() * 4,
+        size: 6 + Math.random() * 8,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.3,
+        shape: Math.random() < 0.3 ? 'star' : (Math.random() < 0.5 ? 'heart' : 'rect')
+      });
+    }
+    confettiActive = true;
+    const startTime = Date.now();
+    function drawHeart(ctx, x, y, s){
+      ctx.beginPath();
+      ctx.moveTo(x, y + s*0.3);
+      ctx.bezierCurveTo(x, y, x - s*0.5, y, x - s*0.5, y + s*0.3);
+      ctx.bezierCurveTo(x - s*0.5, y + s*0.6, x, y + s*0.8, x, y + s);
+      ctx.bezierCurveTo(x, y + s*0.8, x + s*0.5, y + s*0.6, x + s*0.5, y + s*0.3);
+      ctx.bezierCurveTo(x + s*0.5, y, x, y, x, y + s*0.3);
+      ctx.fill();
+    }
+    function drawStar(ctx, x, y, s){
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a = (i * 2 * Math.PI / 5) - Math.PI/2;
+        ctx.lineTo(x + Math.cos(a)*s, y + Math.sin(a)*s);
+        const a2 = a + Math.PI/5;
+        ctx.lineTo(x + Math.cos(a2)*s*0.4, y + Math.sin(a2)*s*0.4);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+    function loop(){
+      const elapsed = Date.now() - startTime;
+      ctx.clearRect(0, 0, w, h);
+      let alive = 0;
+      for (const p of pieces) {
+        if (p.y > h + 30) continue;
+        alive++;
+        p.vy += 0.08;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        if (p.shape === 'star') drawStar(ctx, 0, 0, p.size * 0.6);
+        else if (p.shape === 'heart') drawHeart(ctx, -p.size/2, -p.size/2, p.size);
+        else ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size * 0.6);
+        ctx.restore();
+      }
+      if (alive > 0 && elapsed < 6500) requestAnimationFrame(loop);
+      else { ctx.clearRect(0, 0, w, h); confettiActive = false; }
+    }
+    loop();
+  }
+
+  // ===== WEB AUDIO — ambient pad + chimes =====
+  let audioCtx = null;
+  let musicPlaying = false;
+  let musicNodes = null;
+  let masterGain = null;
+  function initAudio(){
+    if (audioCtx) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    audioCtx = new AC();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 1;
+    masterGain.connect(audioCtx.destination);
+  }
+  function startMusic(){
+    initAudio();
+    if (!audioCtx || musicPlaying) return;
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const padGain = audioCtx.createGain();
+    padGain.gain.setValueAtTime(0, now);
+    padGain.gain.linearRampToValueAtTime(0.12, now + 1.2);
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 900;
+    filter.Q.value = 0.6;
+    padGain.connect(filter);
+    filter.connect(masterGain);
+    // C major triad voicing — C3 G3 E4 C5 (warm)
+    const freqs = [130.81, 196.0, 329.63, 523.25];
+    const oscs = [];
+    for (const f of freqs) {
+      const o1 = audioCtx.createOscillator();
+      o1.type = 'sine';
+      o1.frequency.value = f;
+      const o2 = audioCtx.createOscillator();
+      o2.type = 'triangle';
+      o2.frequency.value = f * 1.005;
+      const g = audioCtx.createGain();
+      g.gain.value = 0.25;
+      o1.connect(g);
+      o2.connect(g);
+      g.connect(padGain);
+      o1.start(now);
+      o2.start(now);
+      // slow LFO for warmth
+      const lfo = audioCtx.createOscillator();
+      lfo.frequency.value = 0.1 + Math.random() * 0.2;
+      const lfoGain = audioCtx.createGain();
+      lfoGain.gain.value = f * 0.002;
+      lfo.connect(lfoGain);
+      lfoGain.connect(o1.frequency);
+      lfo.start(now);
+      oscs.push(o1, o2, lfo);
+    }
+    musicNodes = { oscs, padGain, filter };
+    musicPlaying = true;
+  }
+  function stopMusic(){
+    if (!musicNodes || !audioCtx) return;
+    const now = audioCtx.currentTime;
+    musicNodes.padGain.gain.cancelScheduledValues(now);
+    musicNodes.padGain.gain.setValueAtTime(musicNodes.padGain.gain.value, now);
+    musicNodes.padGain.gain.linearRampToValueAtTime(0, now + 1);
+    setTimeout(() => {
+      if (musicNodes) { for (const o of musicNodes.oscs) try { o.stop(); } catch(e) {} musicNodes = null; }
+    }, 1100);
+    musicPlaying = false;
+  }
+  function playChime(){
+    initAudio();
+    if (!audioCtx) return;
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    [880, 1320, 1760].forEach((f, i) => {
+      const o = audioCtx.createOscillator();
+      o.type = 'sine';
+      o.frequency.value = f;
+      const g = audioCtx.createGain();
+      g.gain.setValueAtTime(0, now + i * 0.05);
+      g.gain.linearRampToValueAtTime(0.18, now + i * 0.05 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.6);
+      o.connect(g);
+      g.connect(masterGain);
+      o.start(now + i * 0.05);
+      o.stop(now + i * 0.05 + 0.7);
+    });
+  }
+  function playSparkle(){
+    initAudio();
+    if (!audioCtx) return;
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const o = audioCtx.createOscillator();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(2400, now);
+    o.frequency.exponentialRampToValueAtTime(800, now + 0.15);
+    const g = audioCtx.createGain();
+    g.gain.setValueAtTime(0.12, now);
+    g.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+    o.connect(g);
+    g.connect(masterGain);
+    o.start(now);
+    o.stop(now + 0.18);
+  }
+
+  // music toggle
+  const musicBtn = document.getElementById('musicBtn');
+  const savedMusic = localStorage.getItem('jp_music') === 'on';
+  function updateMusicBtn(){
+    musicBtn.textContent = musicPlaying ? '🎵' : '🔇';
+    musicBtn.classList.toggle('playing', musicPlaying);
+    musicBtn.setAttribute('aria-label', musicPlaying ? 'Pausar música ambiente' : 'Tocar música ambiente');
+  }
+  musicBtn.addEventListener('click', () => {
+    if (musicPlaying) { stopMusic(); localStorage.setItem('jp_music', 'off'); }
+    else { startMusic(); localStorage.setItem('jp_music', 'on'); }
+    updateMusicBtn();
+  });
+  // Defer auto-resume on first user gesture if previously on
+  if (savedMusic) {
+    const onFirstClick = () => { startMusic(); updateMusicBtn(); document.removeEventListener('click', onFirstClick); };
+    document.addEventListener('click', onFirstClick, { once: true });
+  }
+  updateMusicBtn();
+
+  // ===== CURSOR SPARKLE TRAIL (desktop only) =====
+  if (isDesktop && !reducedMotion) {
+    const sparks = [];
+    const SPARK_COUNT = 8;
+    for (let i = 0; i < SPARK_COUNT; i++) {
+      const el = document.createElement('div');
+      el.className = 'cursor-spark';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      sparks.push({ el, x: 0, y: 0 });
+    }
+    let mx = -100, my = -100;
+    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    let lastEmit = 0;
+    function trail(t){
+      let tx = mx, ty = my;
+      for (const s of sparks) {
+        s.x += (tx - s.x) * 0.35;
+        s.y += (ty - s.y) * 0.35;
+        s.el.style.left = s.x + 'px';
+        s.el.style.top = s.y + 'px';
+        tx = s.x; ty = s.y;
+      }
+      if (t - lastEmit > 80) {
+        lastEmit = t;
+        for (let i = 0; i < sparks.length; i++) {
+          sparks[i].el.style.opacity = (1 - i / sparks.length) * 0.5;
+        }
+      }
+      requestAnimationFrame(trail);
+    }
+    requestAnimationFrame(trail);
+  }
+
+  // ===== CHARACTER INTERACTIVITY =====
+  const princeGroup = document.querySelector('.prince-group');
+  const foxGroup = document.querySelector('.fox-group');
+  const roseGroup = document.querySelector('.rose-group');
+  if (princeGroup) {
+    princeGroup.addEventListener('click', () => { playSparkle(); spawnSparkleBurst(princeGroup); });
+  }
+  if (foxGroup) {
+    foxGroup.addEventListener('click', () => { playSparkle(); spawnSparkleBurst(foxGroup); });
+  }
+  if (roseGroup) {
+    roseGroup.addEventListener('click', () => {
+      playSparkle();
+      const flower = roseGroup.querySelector('.rose-flower');
+      if (flower) {
+        flower.classList.remove('rose-petal-pulse');
+        void flower.offsetWidth;
+        flower.classList.add('rose-petal-pulse');
+      }
+    });
+  }
+  function spawnSparkleBurst(svgEl){
+    if (reducedMotion) return;
+    const rect = svgEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    for (let i = 0; i < 14; i++) {
+      const s = document.createElement('div');
+      s.className = 'cursor-spark';
+      s.style.width = (4 + Math.random() * 6) + 'px';
+      s.style.height = s.style.width;
+      s.style.left = cx + 'px';
+      s.style.top = cy + 'px';
+      s.style.opacity = '1';
+      document.body.appendChild(s);
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 40 + Math.random() * 60;
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist;
+      s.animate([
+        { transform: `translate(-50%,-50%) translate(0,0) scale(1)`, opacity: 1 },
+        { transform: `translate(-50%,-50%) translate(${dx}px, ${dy}px) scale(0.2)`, opacity: 0 }
+      ], { duration: 700 + Math.random() * 300, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' });
+      setTimeout(() => s.remove(), 1100);
+    }
+  }
+
+  // also click on big background stars triggers extra shooting star
+  document.querySelectorAll('.star.gold').forEach(s => {
+    s.style.cursor = 'pointer';
+    s.style.pointerEvents = 'auto';
+    s.addEventListener('click', () => {
+      playSparkle();
+      const shoot = document.getElementById('shoot1');
+      if (shoot) {
+        shoot.style.animation = 'none';
+        void shoot.offsetWidth;
+        shoot.style.animation = 'shoot 1.4s ease-out';
+      }
+    });
+  });
+
+  // ===== WISHES WALL (localStorage) =====
+  const wishesWall = document.getElementById('wishesWall');
+  const wishName = document.getElementById('wishName');
+  const wishMsg = document.getElementById('wishMsg');
+  const STORAGE_KEY = 'jp_wishes_v1';
+  function loadWishes(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
+  function saveWishes(arr){ localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+  function renderWishes(){
+    const wishes = loadWishes();
+    wishesWall.innerHTML = '';
+    wishes.slice().reverse().forEach((w, i) => {
+      const card = document.createElement('div');
+      card.className = 'wish-card';
+      card.style.setProperty('--rot', (((i * 37) % 9) - 4) + 'deg');
+      card.innerHTML = `<div class="wish-msg">${escapeHtml(w.msg)}</div><div class="wish-author">— ${escapeHtml(w.name || 'Anônimo')}</div>`;
+      wishesWall.appendChild(card);
+    });
+  }
+  document.getElementById('btnSaveWish').addEventListener('click', () => {
+    const name = (wishName.value || '').trim();
+    const msg = (wishMsg.value || '').trim();
+    if (!msg) { wishMsg.focus(); return; }
+    const wishes = loadWishes();
+    wishes.push({ name: name || 'Anônimo', msg, t: Date.now() });
+    saveWishes(wishes);
+    wishMsg.value = '';
+    playChime();
+    renderWishes();
+  });
+  document.getElementById('btnSendWish').addEventListener('click', () => {
+    const name = (wishName.value || '').trim();
+    const msg = (wishMsg.value || '').trim();
+    if (!msg) { wishMsg.focus(); return; }
+    const text = encodeURIComponent(`Recadinho para o José Pedro 🌟\n\n"${msg}"\n— ${name || 'Anônimo'}`);
+    window.open('https://wa.me/?text=' + text, '_blank');
+  });
+  renderWishes();
+
+  // ===== Keyboard accessibility — Enter on RSVP triggers confetti =====
+  [document.getElementById('btnRSVP'), document.getElementById('btnCalendar'), document.getElementById('btnShare')].forEach(b => {
+    if (b) b.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); b.click(); } });
+  });
 </script>
 
 </body>
