@@ -1420,33 +1420,6 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ===== Actions =====
-  function confirmRSVP() {
-    const msg = encodeURIComponent('Olá! Confirmo presença no aniversário de 1 ano do José Pedro 🌟');
-    window.open('https://wa.me/?text=' + msg, '_blank');
-  }
-
-  function addToCalendar() {
-    const start = '20260524T213000Z';
-    const end = '20260525T003000Z';
-    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Aniversário 1 ano - José Pedro')}&dates=${start}/${end}&details=${encodeURIComponent('Você está convidado para comemorar meu primeiro ano de vida!')}`;
-    window.open(url, '_blank');
-  }
-
-  async function shareInvite() {
-    const data = {
-      title: 'José Pedro - 1 ano',
-      text: 'Você está convidado para o aniversário de 1 ano do José Pedro! 24/05/2026 às 18:30 🌟',
-      url: window.location.href
-    };
-    if (navigator.share) {
-      try { await navigator.share(data); } catch(e) {}
-    } else {
-      navigator.clipboard.writeText(data.text + ' ' + data.url);
-      alert('Convite copiado!');
-    }
-  }
-
   // ===== Subtle parallax on prince scene (desktop only) =====
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isDesktop = window.matchMedia('(hover: hover)').matches;
